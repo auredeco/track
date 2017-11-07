@@ -1,0 +1,27 @@
+/**
+ * Basic typography style for copy text
+ */
+
+body {
+  color: $text-color;
+  font-family: $text-font-stack;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway';
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: relative;
+
+  span {
+    &:after {
+      position: absolute;
+      content: '';
+      width: 20%;
+      height: 1px;
+      border-bottom: 2px solid $text-color;
+      bottom: -10px;
+      left: 0
+    }
+  }
+}

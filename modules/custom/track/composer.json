@@ -1,0 +1,14 @@
+{
+  "name": "drupal/track",
+  "type": "drupal-module",
+  "description": "Module for the course cmsdev",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/track",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/track",
+    "source": "http://cgit.drupalcode.org/track"
+  },
+  "require": { }
+}

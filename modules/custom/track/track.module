@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains track.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function track_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the track module.
+    case 'help.page.track':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Module for the course cmsdev') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function track_theme() {
+  return [
+    'track' => [
+      'render element' => 'children',
+    ],
+  ];
+}

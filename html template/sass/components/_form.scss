@@ -1,0 +1,40 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the form component.
+// -----------------------------------------------------------------------------
+
+form {
+    .input-field {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 2px solid $text-color;
+        margin-top: 1.5rem;
+
+        figure {
+            margin: 0.5rem;
+            padding: 0.3rem;
+            padding-right: 0.7rem;
+            border-right: 2px solid $text-color;
+            width: 35px;
+
+            .fa-lock {
+                font-size: 1.2rem;
+                margin-left: 0.1rem;
+            }
+        }
+
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            background: none;
+
+            &:before {
+                border-right: 1px solid $text-color;
+            }
+        }
+    }
+
+    .button-field {
+        margin-top: 2rem;
+    }
+}

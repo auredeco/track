@@ -14,6 +14,15 @@ import vuenav from './components/partials/_navigation.vue'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      'uri' : 'http://cmsdev.localhost/',
+      'headers': {
+        "Accept" : "application/hal+json",
+        "Content-Type": "application/hal+json"
+      }
+    }
+  },
   components: {
     'vueheader': vueheader,
     'vuenav': vuenav

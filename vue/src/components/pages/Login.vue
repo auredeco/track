@@ -4,15 +4,15 @@
     <form action="">
       <div class="input-field">
           <figure>
-              <i class="fa fa-align-left" aria-hidden="true"></i>
+             <i class="fa fa-envelope" aria-hidden="true"></i>
           </figure>
-          <input type="text" name="firstname" placeholder="First name">
+          <input type="text" name="username" placeholder="Emailadress">
       </div>
       <div class="input-field">
           <figure>
-              <i class="fa fa-align-left" aria-hidden="true"></i>
+              <i class="fa fa-lock" aria-hidden="true"></i> 
           </figure>
-          <input type="text" name="firstname" placeholder="Last name">
+          <input type="password" name="password" placeholder="Password">
       </div>
     </form>
     <div class="button-field">

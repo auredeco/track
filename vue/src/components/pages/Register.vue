@@ -81,7 +81,6 @@ export default {
         let uri = this.$parent.uri;
         let headers = this.$parent.headers;
         console.log("registering user...");
-
         axios.post('http://cmsdev.localhost/user/register?_format=hal_json', {
             /*"_links": {
                 "type": {

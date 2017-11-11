@@ -2,9 +2,11 @@
   <div class="block">
     <h1><span>{{ title }}</span></h1>
     <ul id="example-1">
-      <li v-for="vehicle in vehicles">
-        {{ vehicle.name[0].value }}
-      </li>
+       <li v-for="vehicle in vehicles">
+         <router-link :to="{ name: 'vehicle-detail', params: { id: vehicle.id[0].value }}">
+          {{ vehicle.name[0].value }}
+        </router-link>
+      </li>    
     </ul>
   </div>
 </template>
@@ -25,7 +27,6 @@ export default {
     .get('http://cmsdev.localhost/vehicles')
     .then(response => {
       // JSON responses are automatically parsed.
-      console.log(response.data)
       self.vehicles = response.data
     })
     .catch(e => {

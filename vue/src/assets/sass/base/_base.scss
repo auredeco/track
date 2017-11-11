@@ -42,8 +42,16 @@ body {
     outline: none; 
   }
   
-
   .warning {
     color: $warning;
+  }
+
+  .block {
+    width: 100%;
+    
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 }

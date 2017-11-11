@@ -4,6 +4,7 @@ import Login from '@/components/pages/Login'
 import Register from '@/components/pages/Register'
 import Home from '@/components/pages/Home'
 import Overview from '@/components/pages/Overview'
+import VehicleDetail from '@/components/pages/details/Vehicle-detail'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
       path: '/overview',
       name: 'overview',
       component: Overview
+    },
+    {
+      path: '/vehicle/:id',
+      name: 'vehicle-detail',
+      component: VehicleDetail
     }
   ]
 })

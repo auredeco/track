@@ -20,7 +20,8 @@ export default {
       'headers': {
         "Accept" : "application/hal+json",
         "Content-Type": "application/hal+json"
-      }
+      },
+      'user': null
     }
   },
   components: {

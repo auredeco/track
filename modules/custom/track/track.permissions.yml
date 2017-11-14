@@ -20,3 +20,25 @@ view published vehicle entities:
 
 view unpublished vehicle entities:
   title: 'View unpublished Vehicle entities'
+add brand entities:
+  title: 'Create new Brand entities'
+
+administer brand entities:
+  title: 'Administer Brand entities'
+  description: 'Allow to access the administration form to configure Brand entities.'
+  restrict access: true
+
+delete brand entities:
+  title: 'Delete Brand entities'
+
+edit brand entities:
+  title: 'Edit Brand entities'
+
+access brand overview:
+  title: 'Access the Brand overview page'
+
+view published brand entities:
+  title: 'View published Brand entities'
+
+view unpublished brand entities:
+  title: 'View unpublished Brand entities'

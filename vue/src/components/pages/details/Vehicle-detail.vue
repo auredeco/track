@@ -27,7 +27,7 @@ export default {
         .then(response => {
           // JSON responses are automatically parsed.
           self.vehicle = response.data;
-          this.getVehicleOwner();
+          //this.getVehicleOwner();
         })
         .catch(e => {
           this.errors.push(e)

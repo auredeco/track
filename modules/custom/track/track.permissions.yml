@@ -1,0 +1,129 @@
+add vehicle entities:
+  title: 'Create new Vehicle entities'
+
+administer vehicle entities:
+  title: 'Administer Vehicle entities'
+  description: 'Allow to access the administration form to configure Vehicle entities.'
+  restrict access: true
+
+delete vehicle entities:
+  title: 'Delete Vehicle entities'
+
+edit vehicle entities:
+  title: 'Edit Vehicle entities'
+
+access vehicle overview:
+  title: 'Access the Vehicle overview page'
+
+view published vehicle entities:
+  title: 'View published Vehicle entities'
+
+view unpublished vehicle entities:
+  title: 'View unpublished Vehicle entities'
+add brand entities:
+  title: 'Create new Brand entities'
+
+administer brand entities:
+  title: 'Administer Brand entities'
+  description: 'Allow to access the administration form to configure Brand entities.'
+  restrict access: true
+
+delete brand entities:
+  title: 'Delete Brand entities'
+
+edit brand entities:
+  title: 'Edit Brand entities'
+
+access brand overview:
+  title: 'Access the Brand overview page'
+
+view published brand entities:
+  title: 'View published Brand entities'
+
+view unpublished brand entities:
+  title: 'View unpublished Brand entities'
+add vehicle type entities:
+  title: 'Create new Vehicle type entities'
+
+administer vehicle type entities:
+  title: 'Administer Vehicle type entities'
+  description: 'Allow to access the administration form to configure Vehicle type entities.'
+  restrict access: true
+
+delete vehicle type entities:
+  title: 'Delete Vehicle type entities'
+
+edit vehicle type entities:
+  title: 'Edit Vehicle type entities'
+
+access vehicle type overview:
+  title: 'Access the Vehicle type overview page'
+
+view published vehicle type entities:
+  title: 'View published Vehicle type entities'
+
+view unpublished vehicle type entities:
+  title: 'View unpublished Vehicle type entities'
+add location entities:
+  title: 'Create new Location entities'
+
+administer location entities:
+  title: 'Administer Location entities'
+  description: 'Allow to access the administration form to configure Location entities.'
+  restrict access: true
+
+delete location entities:
+  title: 'Delete Location entities'
+
+edit location entities:
+  title: 'Edit Location entities'
+
+access location overview:
+  title: 'Access the Location overview page'
+
+view published location entities:
+  title: 'View published Location entities'
+
+view unpublished location entities:
+  title: 'View unpublished Location entities'
+add vehicle review entities:
+  title: 'Create new Vehicle review entities'
+
+administer vehicle review entities:
+  title: 'Administer Vehicle review entities'
+  description: 'Allow to access the administration form to configure Vehicle review entities.'
+  restrict access: true
+
+delete vehicle review entities:
+  title: 'Delete Vehicle review entities'
+
+edit vehicle review entities:
+  title: 'Edit Vehicle review entities'
+
+access vehicle review overview:
+  title: 'Access the Vehicle review overview page'
+
+view published vehicle review entities:
+  title: 'View published Vehicle review entities'
+
+view unpublished vehicle review entities:
+  title: 'View unpublished Vehicle review entities'
+add booking entities:
+  title: 'Create new Booking entities'
+
+administer booking entities:
+  title: 'Administer Booking entities'
+  description: 'Allow to access the administration form to configure Booking entities.'
+  restrict access: true
+
+delete booking entities:
+  title: 'Delete Booking entities'
+
+edit booking entities:
+  title: 'Edit Booking entities'
+
+view published booking entities:
+  title: 'View published Booking entities'
+
+view unpublished booking entities:
+  title: 'View unpublished Booking entities'

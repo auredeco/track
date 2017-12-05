@@ -1,0 +1,132 @@
+# Vehicle routing definition
+vehicle.settings_tab:
+  route_name: vehicle.settings
+  title: 'Settings'
+  base_route: vehicle.settings
+
+entity.vehicle.canonical:
+  route_name: entity.vehicle.canonical
+  base_route: entity.vehicle.canonical
+  title: 'View'
+
+entity.vehicle.edit_form:
+  route_name: entity.vehicle.edit_form
+  base_route: entity.vehicle.canonical
+  title: 'Edit'
+
+entity.vehicle.delete_form:
+  route_name:  entity.vehicle.delete_form
+  base_route:  entity.vehicle.canonical
+  title: Delete
+  weight: 10
+
+# Brand routing definition
+brand.settings_tab:
+  route_name: brand.settings
+  title: 'Settings'
+  base_route: brand.settings
+
+entity.brand.canonical:
+  route_name: entity.brand.canonical
+  base_route: entity.brand.canonical
+  title: 'View'
+
+entity.brand.edit_form:
+  route_name: entity.brand.edit_form
+  base_route: entity.brand.canonical
+  title: 'Edit'
+
+entity.brand.delete_form:
+  route_name:  entity.brand.delete_form
+  base_route:  entity.brand.canonical
+  title: Delete
+  weight: 10
+
+# Vehicle type routing definition
+vehicle_type.settings_tab:
+  route_name: vehicle_type.settings
+  title: 'Settings'
+  base_route: vehicle_type.settings
+
+entity.vehicle_type.canonical:
+  route_name: entity.vehicle_type.canonical
+  base_route: entity.vehicle_type.canonical
+  title: 'View'
+
+entity.vehicle_type.edit_form:
+  route_name: entity.vehicle_type.edit_form
+  base_route: entity.vehicle_type.canonical
+  title: 'Edit'
+
+entity.vehicle_type.delete_form:
+  route_name:  entity.vehicle_type.delete_form
+  base_route:  entity.vehicle_type.canonical
+  title: Delete
+  weight: 10
+
+# Location routing definition
+location.settings_tab:
+  route_name: location.settings
+  title: 'Settings'
+  base_route: location.settings
+
+entity.location.canonical:
+  route_name: entity.location.canonical
+  base_route: entity.location.canonical
+  title: 'View'
+
+entity.location.edit_form:
+  route_name: entity.location.edit_form
+  base_route: entity.location.canonical
+  title: 'Edit'
+
+entity.location.delete_form:
+  route_name:  entity.location.delete_form
+  base_route:  entity.location.canonical
+  title: Delete
+  weight: 10
+
+# Vehicle review routing definition
+vehicle_review.settings_tab:
+  route_name: vehicle_review.settings
+  title: 'Settings'
+  base_route: vehicle_review.settings
+
+entity.vehicle_review.canonical:
+  route_name: entity.vehicle_review.canonical
+  base_route: entity.vehicle_review.canonical
+  title: 'View'
+
+entity.vehicle_review.edit_form:
+  route_name: entity.vehicle_review.edit_form
+  base_route: entity.vehicle_review.canonical
+  title: 'Edit'
+
+entity.vehicle_review.delete_form:
+  route_name:  entity.vehicle_review.delete_form
+  base_route:  entity.vehicle_review.canonical
+  title: Delete
+  weight: 10
+
+# Booking routing definition
+booking.settings_tab:
+  route_name: booking.settings
+  title: 'Settings'
+  base_route: booking.settings
+
+entity.booking.canonical:
+  route_name: entity.booking.canonical
+  base_route: entity.booking.canonical
+  title: 'View'
+
+entity.booking.edit_form:
+  route_name: entity.booking.edit_form
+  base_route: entity.booking.canonical
+  title: 'Edit'
+
+entity.booking.delete_form:
+  route_name:  entity.booking.delete_form
+  base_route:  entity.booking.canonical
+  title: Delete
+  weight: 10
+

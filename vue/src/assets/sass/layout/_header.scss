@@ -1,0 +1,30 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+header {
+    background: $text-color;
+    color: $white;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    #logo {
+        flex: 1;
+        margin: 0 1rem;
+        max-width: 150px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    #hamburger {
+        flex: 1;
+        float: right;
+        margin: 1rem;
+        text-align: right;
+    }
+}

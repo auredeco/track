@@ -1,0 +1,84 @@
+
+# Vehicle menu items definition
+entity.vehicle.collection:
+  title: 'Vehicle list'
+  route_name: entity.vehicle.collection
+  description: 'List Vehicle entities'
+  parent: system.admin_structure
+  weight: 100
+
+vehicle.admin.structure.settings:
+  title: Vehicle settings
+  description: 'Configure Vehicle entities'
+  route_name: vehicle.settings
+  parent: system.admin_structure
+
+# Brand menu items definition
+entity.brand.collection:
+  title: 'Brand list'
+  route_name: entity.brand.collection
+  description: 'List Brand entities'
+  parent: system.admin_structure
+  weight: 100
+
+brand.admin.structure.settings:
+  title: Brand settings
+  description: 'Configure Brand entities'
+  route_name: brand.settings
+  parent: system.admin_structure
+
+# Vehicle type menu items definition
+entity.vehicle_type.collection:
+  title: 'Vehicle type list'
+  route_name: entity.vehicle_type.collection
+  description: 'List Vehicle type entities'
+  parent: system.admin_structure
+  weight: 100
+
+vehicle_type.admin.structure.settings:
+  title: Vehicle type settings
+  description: 'Configure Vehicle type entities'
+  route_name: vehicle_type.settings
+  parent: system.admin_structure
+
+# Location menu items definition
+entity.location.collection:
+  title: 'Location list'
+  route_name: entity.location.collection
+  description: 'List Location entities'
+  parent: system.admin_structure
+  weight: 100
+
+location.admin.structure.settings:
+  title: Location settings
+  description: 'Configure Location entities'
+  route_name: location.settings
+  parent: system.admin_structure
+
+# Vehicle review menu items definition
+entity.vehicle_review.collection:
+  title: 'Vehicle review list'
+  route_name: entity.vehicle_review.collection
+  description: 'List Vehicle review entities'
+  parent: system.admin_structure
+  weight: 100
+
+vehicle_review.admin.structure.settings:
+  title: Vehicle review settings
+  description: 'Configure Vehicle review entities'
+  route_name: vehicle_review.settings
+  parent: system.admin_structure
+
+# Booking menu items definition
+entity.booking.collection:
+  title: 'Booking list'
+  route_name: entity.booking.collection
+  description: 'List Booking entities'
+  parent: system.admin_structure
+  weight: 100
+
+booking.admin.structure.settings:
+  title: Booking settings
+  description: 'Configure Booking entities'
+  route_name: booking.settings
+  parent: system.admin_structure

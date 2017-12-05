@@ -1,0 +1,40 @@
+nav {
+    height: calc(100vh - 90px);
+    width: 100%;
+    position: fixed;
+    top: 87px;
+    background: $brand-color;
+    z-index: 99;
+    right: -100%;
+    -webkit-transition: right 500ms; /* Safari */
+    transition: right 500mss;
+
+    h1 {
+        margin-left: 2rem;
+    }
+
+    ul {
+        height: 80%;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+
+        li {
+            border-bottom: 2px solid $text-color;
+            padding: 1rem 0;
+            font-size: 1.2rem;
+
+            i {
+                margin-right: 1rem;
+            }
+        }
+    }
+}
+
+.nav-open {
+    right: 0;
+    -webkit-transition: right 500ms; /* Safari */
+    transition: right 500mss;
+}

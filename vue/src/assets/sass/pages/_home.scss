@@ -1,0 +1,51 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+body.homepage {
+    background: url('../img/bg.jpg');
+    color: #FFF;
+
+    .logo {
+        max-width: 250px;
+        margin: 0 auto;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    header {
+        display: none;
+    }
+
+    form {
+        margin-top: 5rem;
+        color: #FFF;
+
+        .input-field {
+            border-color: #FFF;
+
+            figure {
+                border-color: #FFF;
+            }
+
+            input {
+                
+            }
+
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover,
+            input:-webkit-autofill:focus,
+            input:-webkit-autofill:active {
+                transition: background-color 5000s ease-in-out 0s;
+                -webkit-text-fill-color: white !important;
+            }
+        }
+    }
+    .button-field {
+        padding: 1rem;
+        position: absolute;
+        bottom: 5rem;
+        left: 0;
+    }
+}

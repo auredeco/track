@@ -1,0 +1,98 @@
+.vehicle-detail-page {
+    .vehicle-image {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 25px;
+        z-index: -1;
+    }
+
+    .vehicle-details {
+        background: rgba(255, 255, 255, 1);
+        color: $text-color;
+        padding: 1rem;
+        border-radius: 15px;
+        position: relative;
+        top: 5rem;
+        -webkit-box-shadow: 8px 4px 42px -15px rgba(0,0,0,0.75);
+        -moz-box-shadow: 8px 4px 42px -15px rgba(0,0,0,0.75);
+        box-shadow: 8px 4px 42px -15px rgba(0,0,0,0.75);
+
+        .vehicle-detail-header {
+            border-bottom: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+
+            h1 {
+                font-size: 16px;
+                text-transform: capitalize;
+                letter-spacing: 1px;
+            }
+
+            .owner {
+                display: flex;
+                align-items: center;
+                i {
+                    font-size: 20px;
+                }
+                .owner-name {
+                    margin-left: 10px;
+                }
+            }
+            .price {
+                background: $brand-color;
+                border-radius: 10px;
+                padding: 0.5rem;
+                margin-bottom: 0.5rem;
+
+                p {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+
+        .vehicle-detail-body {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .tiles {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin-top: 1.5rem;
+
+                div {
+                    background: $brand-color;
+                    padding: 0.5rem;
+                    width: calc(100% / 4 - 5px);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    i {
+                        font-size: 30px;
+                    }
+
+                    p {
+                        margin: 5px 0 0 0;
+                        padding: 0;
+                    }
+                }
+            }
+
+            .description {
+                margin-top: 1.5rem;
+
+                p {
+                    margin-top: 0.5rem;
+                }
+            }
+
+            .specs {
+                margin-top: 1.5rem;
+            }
+        }
+    }
+}

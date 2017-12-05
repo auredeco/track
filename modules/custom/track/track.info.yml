@@ -1,0 +1,5 @@
+name: Track
+type: module
+description: Module for the course cmsdev
+core: 8.x
+package: Custom

@@ -10,10 +10,10 @@
 
 use Drupal\Core\DrupalKernel;
 use Symfony\Component\HttpFoundation\Request;
-
+/*
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: *');
-
+*/
 $autoloader = require_once 'autoload.php';
 
 $kernel = new DrupalKernel('prod', $autoloader);

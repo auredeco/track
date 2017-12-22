@@ -66,7 +66,7 @@
                 div {
                     background: $brand-color;
                     padding: 0.5rem;
-                    width: calc(100% / 4 - 5px);
+                    width: calc(100% / 3 - 5px);
                     display: flex;
                     flex-direction: column;
                     align-items: center;
@@ -93,6 +93,19 @@
             .specs {
                 margin-top: 1.5rem;
             }
+        }
+    }
+    .Book-Button {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        left:0;
+        text-align: center;
+        background: $brand-color;
+
+        a {
+            color: #000;
         }
     }
 }

@@ -10,9 +10,9 @@
       <paginate name="filteredVehicles" :list="filterByName" :per="5">
        <div v-for="vehicle in paginated('filteredVehicles')" class="vehicle-block">
          <router-link :to="{ name: 'vehicle-detail', params: { id: vehicle.id[0].value }}">
-          <!--<img v-if="vehicle.field_image[0].url" :src="vehicle.field_image[0].url" :alt="vehicle.field_image[0].alt">-->
+          <img v-if="vehicle.field_image[0].url" :src="vehicle.field_image[0].url" :alt="vehicle.field_image[0].alt">
           <div class="brand">
-            <!--<img v-if="vehicle.field_brand[1]" :src="vehicle.field_brand[1].field_brand_logo[0].url" :alt="vehicle.field_brand[1].field_brand_logo[0].alt">-->
+            <img v-if="vehicle.field_brand[1]" :src="vehicle.field_brand[1].field_logo[0].url" :alt="vehicle.field_brand[1].field_logo[0].alt">
           </div>
           <div class="vehicle-info">
             <h1 v-if="vehicle.name[0].value">{{vehicle.name[0].value}}</h1>
@@ -21,7 +21,6 @@
       </div>    
       </paginate>
       <paginate-links for="vehicles" :limit="5" :async="true"></paginate-links>
-
   </div>
 </template>
 

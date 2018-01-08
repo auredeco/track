@@ -23,6 +23,14 @@
   }
 }
 
+@mixin transition($args) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
 /// Make a context based selector a little more friendly
 /// @author Hugo Giraudel
 /// @param {String} $context

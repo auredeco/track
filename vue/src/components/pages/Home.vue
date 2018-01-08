@@ -4,6 +4,9 @@
     <router-link :to="{ name: 'overview'}" class="btn btn-orange">
         Overzicht voertuigen
     </router-link>
+    <router-link :to="{ name: 'BestSellers'}" class="btn btn-orange">
+        Top aanbieders
+    </router-link>
   </div>
 </template>
 

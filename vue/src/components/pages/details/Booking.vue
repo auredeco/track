@@ -105,10 +105,10 @@ export default {
         }
       }).then(response => {
         self.UpdateVehicleBookings(response.data);
-        self.$router.push('booking/succes');
+        //self.$router.push('booking/succes');
       })
       .catch( error =>{
-        //console.log(error.response);
+        console.log(error.response);
       });
     },
     UpdateVehicleBookings(booking) {
@@ -120,8 +120,12 @@ export default {
         "url": "/track/booking/" + booking.id[0].value
       }
       this.vehicle.field_bookings.push(newBooking);
-      delete this.vehicle.changed;
-      delete this.vehicle.created;
+      if(this.vehicle.changed || this.vehicle.changed || this.vehicle.field_comments)
+      {
+        delete this.vehicle.changed;
+        delete this.vehicle.created;
+        delete this.vehicle.field_comments;
+      }
       console.log(JSON.stringify(this.vehicle));
       let car = this.vehicle;
 
@@ -132,7 +136,6 @@ export default {
         data: car
       }).then(response => {
         console.log(response.data);
-        //self.UpdateVehicleBookings(response.data);
       }).catch( error => {
         console.log(error);
       })

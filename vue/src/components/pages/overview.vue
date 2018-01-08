@@ -1,21 +1,26 @@
 <template>
   <div class="block">
+    <div class="button-field">
+      <router-link :to="{ name: 'CreateVehicle'}">
+        <div class="small-button btn-orange"><i class="fa fa-plus" aria-hidden="true"></i> Voertuig aanbieden</div>
+      </router-link>
+    </div>
     <div class="input-field">
           <figure>
             <i class="fa fa-search" aria-hidden="true"></i>
           </figure>
           <input type="text" name="filter" placeholder="Filter" v-model="search">
       </div>
-
       <paginate name="filteredVehicles" :list="filterByName" :per="5">
        <div v-for="vehicle in paginated('filteredVehicles')" class="vehicle-block">
          <router-link :to="{ name: 'vehicle-detail', params: { id: vehicle.id[0].value }}">
-          <img v-if="vehicle.field_image[0].url" :src="vehicle.field_image[0].url" :alt="vehicle.field_image[0].alt">
+          <img v-if="vehicle.field_image[0]" :src="vehicle.field_image[0].url" :alt="vehicle.field_image[0].alt">
           <div class="brand">
             <img v-if="vehicle.field_brand[1]" :src="vehicle.field_brand[1].field_logo[0].url" :alt="vehicle.field_brand[1].field_logo[0].alt">
           </div>
           <div class="vehicle-info">
             <h1 v-if="vehicle.name[0].value">{{vehicle.name[0].value}}</h1>
+            <p>€{{ vehicle.field_price[0].value }}</p>
           </div>  
         </router-link>
       </div>    
@@ -28,7 +33,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'overview',
+  name: 'Overview',
   data () {
     return {
       title: 'Overzicht voertuigen',

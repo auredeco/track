@@ -26,6 +26,11 @@ nav {
             padding: 1rem 0;
             font-size: 1.2rem;
 
+            a {
+                color: $text-color;
+                text-decoration: none;
+            }
+
             i {
                 margin-right: 1rem;
             }

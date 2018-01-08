@@ -41,7 +41,7 @@ export default {
   methods: {
     checkIfUserLogin() {
       if(localStorage.getItem('Track-User')) {
-        this.user = JSON.parse(localStorage.getItem('Track-User'));
+        this.$parent.user = JSON.parse(localStorage.getItem('Track-User'));
         this.$router.push('/home');
       }
     },

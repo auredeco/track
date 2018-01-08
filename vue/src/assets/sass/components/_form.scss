@@ -31,6 +31,20 @@
                 border-right: 1px solid $text-color;
             }
         }
+
+        select {
+            width: 100%;
+            border: none;
+        }
+
+        .vdp-datepicker__calendar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            -webkit-transition: top 2s; /* Safari */
+            transition: top 2s;
+        }
     }
 
     .button-field {

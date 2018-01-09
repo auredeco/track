@@ -9,6 +9,7 @@ import BookingPage from '@/components/pages/details/Booking'
 import BookingSuccesPage from '@/components/pages/details/BookingSucces'
 import CreateVehicle from '@/components/pages/details/CreateVehicle'
 import Profile from '@/components/pages/Profile'
+import Account from '@/components/pages/Account'
 import MyVehicleBookings from '@/components/pages/details/MyVehicleBookings'
 import BestSellers from '@/components/pages/BestSellers'
 
@@ -58,9 +59,14 @@ export default new Router({
       component: CreateVehicle
     },
     {
-      path: '/profile',
+      path: '/profile/',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/account/:id',
+      name: 'Account',
+      component: Account
     },
     {
       path: '/vehicle/:id/bookings',

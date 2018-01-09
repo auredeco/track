@@ -2,14 +2,15 @@
   <div class="block" v-cloak>
     <h1><span>{{ title }}</span></h1>
     <div v-for='user in users'>
-      <p v-if="user.field_first_name != null">{{ user.field_rating }}</p>
+      <router-link :to="{ name: 'Account', params: { id: user.uid[0].value }}">
+        <p v-if="user.field_first_name != null">{{ user.field_first_name[0].value }} {{ user.field_last_name[0].value }} {{ user.field_rating }}</p>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import _ from 'lodash';
 
 export default {
   name: 'BestSellers',
@@ -30,6 +31,7 @@ export default {
         self.users = response.data;
         this.calculateRating();
         self.users.sort(this.sortByRating);
+        self.users = self.users.splice(0, 5);
       }).catch( error => {
         console.log(error);
       });   

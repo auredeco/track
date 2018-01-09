@@ -9,11 +9,14 @@
         <h3>{{ user.field_first_name[0].value }} {{ user.field_last_name[0].value }}</h3>
         <div v-if="userVehicles.length > 0" class="vehicles">
           <h3>{{ user.field_first_name[0].value }}'s Vehicles</h3>
-          <div v-for="vehicle in userVehicles" class="vehicle">
+          <div v-if="userVehicles.length > 0" v-for="vehicle in userVehicles" class="vehicle">
             <p>{{ vehicle.name[0].value }}</p>
             <router-link :to="{ name: 'MyVehicleBookings', params: { id: vehicle.id[0].value }}">
               <p>Bekijk boekingen</p>
             </router-link>
+          </div>
+          <div v-if="!userVehicles" >
+            <p>Geen voertuigen om weer te geven</p>
           </div>
         </div>
       </div>
@@ -25,7 +28,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'Profile',
+  name: 'Account',
   data () {
     return {
       user: null,
@@ -70,7 +73,7 @@ export default {
   },
   mounted () {
     this.checkIfUserLogin();
-    this.getUserData(this.$parent.user.current_user.uid);
+    this.getUserData(this.$route.params.id);
   }
 }
 </script>

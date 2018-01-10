@@ -19,6 +19,7 @@
     "vue": "^2.3.3",
     "vue-paginate": "^3.5.1",
     "vue-router": "^2.3.1",
+    "vue2-leaflet": "0.0.57",
     "vuejs-datepicker": "^0.9.21"
   },
   "devDependencies": {

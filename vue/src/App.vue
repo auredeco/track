@@ -17,7 +17,8 @@ export default {
   data() {
     return {
       'uri' : 'http://cmsdev.localhost/',
-      'user': null
+      'user': null,
+      'GoogleApiKey': 'AIzaSyC83BcTytl3j1KeFcozeq25MtUT83ZvUDc'
     }
   },
   components: {

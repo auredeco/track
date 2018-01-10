@@ -39,6 +39,12 @@
             <li v-for="condition in vehicle.field_conditions"> {{ condition.value }} </li>
           </ul>
         </div>-->
+        <div class="map-container">
+          <v-map ref="map" :zoom=13 :center="mapSettings.center">
+             <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>
+             <v-marker v-if="mapSettings.marker" :lat-lng="mapSettings.marker"></v-marker>
+          </v-map>
+        </div>
       </div>
       </div>
     <div class="Book-Button">
@@ -52,14 +58,20 @@
 <script>
 import axios from 'axios'
 import Datepicker from 'vuejs-datepicker';
-
 export default {
   name: 'VehicleDetail',
   data () {
     return {
       vehicle: null,
       owner: null,
-      bookings: []
+      bookings: [],
+      mapSettings: {
+        zoom: 13,
+        center: [51.086784, 3.671661],
+        url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        marker: null,
+      }
     }
   },
   components: {
@@ -75,10 +87,8 @@ export default {
         .then(response => {
           self.vehicle = response.data;
           let vehicleBookings = JSON.parse(JSON.stringify(response.data.field_bookings));
-          for(let i = 0; i < vehicleBookings.length; i++) {
-            self.getVehicleBookings(vehicleBookings[i].target_id);
-          }
           self.getVehicleOwner(response.data.user_id[0].target_id);
+          self.getVehicleLocation(self.vehicle.field_location[0].target_id)
         })
         .catch(e => {
           //this.errors.push(e)
@@ -95,21 +105,40 @@ export default {
         self.owner = response.data;
       })
     },
-    getVehicleBookings(vehicleId) {
+    getVehicleLocation(locationId) {
       let self = this;
       axios({
         method: 'get',
         baseURL: 'http://cmsdev.localhost/',
-        url: 'track/booking/' + vehicleId + '?_format=json',
+        url: 'track/location/' + locationId + '?_format=json',
       }).then(response => {
-        self.bookings.push(response.data);
+        self.vehicle.field_location = response.data;
+        self.getLatLngFromLocation();
       })
-      .catch( error =>{
-      });
     },
+    getLatLngFromLocation() {
+      let self = this;
+      let locationData = this.vehicle.field_location.field_streetname[0].value + ',' +
+                     this.vehicle.field_location.field_postal[0].value + ',' +
+                     this.vehicle.field_location.field_city[0].value + ',' +
+                     this.vehicle.field_location.field_country[0].value;
+
+      axios({
+        method: 'get',
+        baseURL: 'https://maps.googleapis.com/maps/api/geocode/',
+        url: 'json?address=' + locationData + '&key=' + self.$parent.GoogleApiKey,
+      }).then(response => {
+        self.mapSettings.center = [response.data.results[0].geometry.location.lat, response.data.results[0].geometry.location.lng];
+        self.mapSettings.marker = L.latLng(response.data.results[0].geometry.location.lat, response.data.results[0].geometry.location.lng);
+      })
+    }
   },
   mounted() {
       this.getVehicleById(this.$route.params.id);
   }
 }
 </script>
+
+<style>
+@import "~leaflet/dist/leaflet.css";
+</style>

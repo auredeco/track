@@ -78,7 +78,7 @@ export default {
       let toDate = new Date(booking.field_end_date[0].value);
       let newRange = {
         from: new Date(booking.field_start_date[0].value),
-        to: toDate.setDate(toDate.getDate() + 1)
+        to: new Date(toDate.setDate(toDate.getDate() + 1))
       }
       this.state.disabled.ranges.push(newRange);
     },

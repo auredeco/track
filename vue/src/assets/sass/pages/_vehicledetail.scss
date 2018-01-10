@@ -95,6 +95,15 @@
             }
         }
     }
+
+    .map-container {
+        height: 300px;
+
+        .leaflet-control {
+            display: none;
+        }
+    }
+
     .Book-Button {
         width: 100%;
         height: auto;
@@ -103,6 +112,7 @@
         left:0;
         text-align: center;
         background: $brand-color;
+        z-index:999;
 
         a {
             color: #000;

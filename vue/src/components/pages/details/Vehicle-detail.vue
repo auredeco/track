@@ -13,7 +13,6 @@
           <p>€{{ vehicle.field_price[0].value }}/dag</p>
         </div>
       </div>
-
       <div class="vehicle-detail-body">
         <div class="tiles">
           <div class="battery">
@@ -22,23 +21,27 @@
           </div>
           <div class="location">
             <i class="fa fa-map-marker" aria-hidden="true"></i>
-            <p>Gent</p>
+            <p v-if="vehicle.field_location.field_city">{{ vehicle.field_location.field_city[0].value }}</p>
           </div>
           <div class="rating">
-            <i class="fa fa-heart" aria-hidden="true"></i>
-            <p>22</p>
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <p>{{ vehicle.field_seats[0].value }}</p>
           </div>
         </div>
         <div class="description">
           <h1><span>Beschrijving</span></h1>
           <p>{{ vehicle.field_description[0].value }}</p>
         </div>
-        <!--<div class="conditions">
+        <div class="age">
+          <h1><span>Bouwjaar</span></h1>
+          <p v-if="vehicle.field_age">{{ vehicle.field_age[0].value }}</p>
+        </div>
+        <div class="conditions">
           <h1><span>Voorwaarden</span></h1>
           <ul>
-            <li v-for="condition in vehicle.field_conditions"> {{ condition.value }} </li>
+            <li v-if="vehicle.field_conditions" v-for="condition in vehicle.field_conditions"> {{ condition.value }} </li>
           </ul>
-        </div>-->
+        </div>
         <div class="map-container">
           <v-map ref="map" :zoom=13 :center="mapSettings.center">
              <v-tilelayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"></v-tilelayer>

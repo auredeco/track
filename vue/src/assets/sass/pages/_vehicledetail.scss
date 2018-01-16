@@ -96,6 +96,18 @@
         }
     }
 
+    ul {
+        list-style: none;
+
+        li {
+            padding: 5px 0;
+            &:before {
+                content: "\00BB";
+                margin-right: 1rem;
+            }
+        }
+    }
+
     .map-container {
         height: 300px;
         padding-bottom: 3rem;

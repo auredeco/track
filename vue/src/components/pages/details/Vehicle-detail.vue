@@ -32,13 +32,11 @@
           <h1><span>Beschrijving</span></h1>
           <p>{{ vehicle.field_description[0].value }}</p>
         </div>
-        <div class="age">
-          <h1><span>Bouwjaar</span></h1>
-          <p v-if="vehicle.field_age">{{ vehicle.field_age[0].value }}</p>
-        </div>
         <div class="conditions">
-          <h1><span>Voorwaarden</span></h1>
+          <h1><span>Specificaties &amp; voorwaarden</span></h1>
           <ul>
+            <li v-if="vehicle.field_age"> Bouwjaar: {{ vehicle.field_age[0].value }}</li>
+            <li> Zitplaatsen: {{ vehicle.field_seats[0].value }}</li>
             <li v-if="vehicle.field_conditions" v-for="condition in vehicle.field_conditions"> {{ condition.value }} </li>
           </ul>
         </div>
@@ -144,4 +142,8 @@ export default {
 
 <style>
 @import "~leaflet/dist/leaflet.css";
+
+.conditions {
+  margin-top: 2rem;
+}
 </style>

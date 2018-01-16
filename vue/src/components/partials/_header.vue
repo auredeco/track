@@ -1,16 +1,15 @@
 <template>
 
     <header id="header">
-        
-        <figure id="logo">
 
-          <router-link :to="{ name: 'home'}">
-         
-              <img :src="require('@/assets/track.png')" alt="logo">
-         
-          </router-link>
+      <figure class="back">
+      
+       <a href="javascript:history.go(-1)"> <i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+      
+      </figure>
+
+          <p class="title">{{ $route.name }}</p>
         
-        </figure>
 
         <figure id="hamburger" v-on:click="openNav">
 
@@ -25,6 +24,11 @@
 <script>
 export default {
   name: 'vueheader',
+  data () {
+    return {
+      currentPage: null
+    }
+  },
   methods: {
     openNav () {
       const hamburger = document.getElementsByClassName('fa-bars')[0]
@@ -36,3 +40,17 @@ export default {
   }
 }
 </script>
+
+<style>
+.back {
+    padding: 0;
+    margin: 0 0 0 1rem;
+    flex: 1;
+    z-index: 999;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+}
+</style>

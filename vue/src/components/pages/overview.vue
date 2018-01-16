@@ -4,19 +4,25 @@
       <router-link :to="{ name: 'CreateVehicle'}">
         <div class="small-button btn-orange"><i class="fa fa-plus" aria-hidden="true"></i> Voertuig aanbieden</div>
       </router-link>
+      <div id="filterbutton" class="btn" v-on:click="toggleFilters">
+        <i class="fa fa-filter" aria-hidden="true"></i> Filters
+      </div>
     </div>
-    <div class="input-field">
+    <div class="filterpanel">
+          <div class="input-field">
           <figure>
             <i class="fa fa-search" aria-hidden="true"></i>
           </figure>
           <input type="text" name="filter" placeholder="Filter" v-model="search">
     </div>
-    <div class="input-field">
-      <select v-model="selectedBrandFilter" name="brand" id="brand">
-        <option value="0"> Selecteer uw merk</option>
-        <option v-for="brand in brands" :value="brand.id[0].value">{{ brand.name[0].value }}</option>
+    <div class="select-wrapper">
+        <select v-model="selectedBrandFilter" name="brand" id="brand">
+          <option value="0"> Selecteer uw merk</option>
+          <option v-for="brand in brands" :value="brand.id[0].value">{{ brand.name[0].value }}</option>
       </select>
-    </div>  
+      <i class="fa fa-caret-down" aria-hidden="true"></i>
+    </div>
+    </div>
       <paginate name="filteredVehicles" :list="filterByName" :per="5">
        <div v-for="vehicle in paginated('filteredVehicles')" class="vehicle-block">
          <router-link :to="{ name: 'vehicle-detail', params: { id: vehicle.id[0].value }}">
@@ -26,15 +32,15 @@
           </div>
           <div class="vehicle-info">
             <h1 v-if="vehicle.name[0].value">{{vehicle.name[0].value}}</h1>
-            <p>{{ vehicle.field_age[0].value }}</p>
-            <p>{{ vehicle.field_conditions[0].value }}</p>
-            <p>{{ vehicle.field_location.DistanceFromUser }}km</p>
-            <p>€{{ vehicle.field_price[0].value }}</p>
+            <p v-if="vehicle.field_age[0].value">{{ vehicle.field_age[0].value }}</p>
+            <p v-if="vehicle.field_conditions[0].value">{{ vehicle.field_conditions[0].value }}</p>
+            <p v-if="vehicle.field_location.DistanceFromUser >= 0">{{ vehicle.field_location.DistanceFromUser }}km</p>
+            <p v-if="vehicle.field_price[0].value">€{{ vehicle.field_price[0].value }}</p>
           </div>  
         </router-link>
       </div>    
       </paginate>
-      <paginate-links for="vehicles" :limit="5" :async="true"></paginate-links>
+      <paginate-links for="filteredVehicles" :limit="6" :async="true"></paginate-links>
   </div>
 </template>
 
@@ -173,7 +179,6 @@ export default {
         baseURL: 'https://maps.googleapis.com/maps/api/geocode/',
         url: 'json?address=' + locationData + '&key=' + self.$parent.GoogleApiKey,
       }).then(response => {
-        //self.user.field_location["LatLng"] = response.data.results[0].geometry.location
         for(let i = 0; i < self.vehicles.length; i++) {
           if(self.vehicles[i].id[0].value == vehicleId) {
             self.vehicles[i].field_location["LatLng"] = response.data.results[0].geometry.location;
@@ -204,6 +209,9 @@ export default {
       } else {
         this.$router.go('/');
       }
+    },
+    toggleFilters() {
+      document.getElementsByClassName('filterpanel')[0].classList.toggle('filter-open');
     }
   },
   computed: {
@@ -225,3 +233,48 @@ export default {
   }
 }
 </script>
+<style>
+.vehicle-block {
+  min-height: 225px;
+}
+.button-field {
+  align-items: center;
+}
+
+.filterpanel {
+  display: none;
+}
+
+.filter-open {
+  display: block;
+}
+
+.select-wrapper {
+    border: 1px solid lightgray !important;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+}
+
+.select-wrapper select {
+  width: 95%;
+}
+
+.paginate-links {
+  padding-bottom: 2rem !important;
+}
+
+.paginate-links li {
+  float: left;
+  padding: 0.5rem;
+  list-style: none;
+}
+
+.paginate-links .active {
+  background: #fac556;
+}
+
+.active a {
+  color: #2D2D2D;
+}
+</style>

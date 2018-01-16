@@ -67,6 +67,7 @@ export default {
     }
   },
   mounted () {
+    document.getElementById('main-nav').classList.remove("nav-open");
     this.AddClassToBody();
     this.checkIfUserLogin();
   }
@@ -76,5 +77,17 @@ export default {
 <style>
 .button-field {
   margin-top: 2rem;
+}
+
+input {
+  color: #FFF;
+}
+
+.button-field a {
+  flex: 1;
+}
+
+.button-field input {
+  flex: 1;
 }
 </style>

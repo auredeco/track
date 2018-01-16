@@ -8,10 +8,14 @@ import VehicleDetail from '@/components/pages/details/Vehicle-detail'
 import BookingPage from '@/components/pages/details/Booking'
 import BookingSuccesPage from '@/components/pages/details/BookingSucces'
 import CreateVehicle from '@/components/pages/details/CreateVehicle'
+import EditVehicle from '@/components/pages/details/UpdateVehicle'
 import Profile from '@/components/pages/Profile'
 import Account from '@/components/pages/Account'
 import MyVehicleBookings from '@/components/pages/details/MyVehicleBookings'
 import BestSellers from '@/components/pages/BestSellers'
+import MyBookings from '@/components/pages/details/MyBookings'
+
+
 
 Vue.use(Router)
 
@@ -59,6 +63,11 @@ export default new Router({
       component: CreateVehicle
     },
     {
+      path: '/vehicle/:id/edit',
+      name: 'Voertuig aanpassen',
+      component: EditVehicle
+    },
+    {
       path: '/profile/',
       name: 'Profile',
       component: Profile
@@ -70,13 +79,18 @@ export default new Router({
     },
     {
       path: '/vehicle/:id/bookings',
-      name: 'MyVehicleBookings',
+      name: 'Voertuig boekingen',
       component: MyVehicleBookings
     },
     {
       path: '/bestsellers',
       name: 'BestSellers',
       component: BestSellers
+    },
+    {
+      path: '/mybookings',
+      name: 'Mijn boekingen',
+      component: MyBookings
     }
   ]
 })

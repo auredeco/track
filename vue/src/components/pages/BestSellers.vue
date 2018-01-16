@@ -1,9 +1,17 @@
 <template>
   <div class="block" v-cloak>
     <h1><span>{{ title }}</span></h1>
-    <div v-for='user in users'>
+    <div v-for='user in users' class="user">
       <router-link :to="{ name: 'Account', params: { id: user.uid[0].value }}">
-        <p v-if="user.field_first_name != null">{{ user.field_first_name[0].value }} {{ user.field_last_name[0].value }} {{ user.field_rating }}</p>
+        <div class="user-image">
+          <figure>
+            <img :src="user.user_picture[0].url" alt="">
+          </figure>
+        </div>
+        <div class="user-info">
+          <p v-if="user.field_first_name != null">{{ user.field_first_name[0].value }} {{ user.field_last_name[0].value }}</p>
+          <p class="score">Gemiddelde score: {{ user.field_rating }}</p>
+        </div>
       </router-link>
     </div>
   </div>
@@ -70,3 +78,39 @@ export default {
   }
 }
 </script>
+
+<style>
+.user a {
+  display: flex;
+}
+
+.user-image figure {
+  padding: 0;
+  margin: 0;
+  height: 100px;
+  width: 100px;
+}
+
+.user {
+  background: #FFF;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0.5rem;
+  -webkit-box-shadow: 8px 4px 42px -15px rgba(0,0,0,0.75);
+  -moz-box-shadow: 8px 4px 42px -15px rgba(0,0,0,0.75);
+  box-shadow: 8px 4px 42px -15px rgba(0,0,0,0.75);
+}
+
+p {
+  padding: 0 0.5rem;
+}
+
+.user a {
+  color: #2D2D2D;
+}
+
+a figure img {
+  width: 100%;
+  height: 100%;
+}
+</style>

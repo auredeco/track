@@ -1,24 +1,29 @@
 <template>
-  <div class="block my-vehicle-bookings" v-cloak>
-    <h1 v-if="vehicle">{{ vehicle.name[0].value }}</h1>
-
-    <h3>Boekingen</h3>
-    <table>
-      <div class="booking-info" v-if="bookings" v-for="booking in bookings">
-        <tr>
-          <td>Datum:</td> <td>{{ moment(booking.created[0].value) }}</td>
-        </tr>
-        <tr>
-          <td>Huurder:</td>  <td>{{ booking.field_booker.field_first_name[0].value }} {{ booking.field_booker.field_last_name[0].value }}</td>
-        </tr>
-        <tr>
-          <td>Startdatum:</td><td>{{ moment(booking.field_start_date[0].value) }}</td>
-        </tr>
-        <tr>
-          <td>Einddatum:</td><td>{{ moment(booking.field_end_date[0].value) }}</td>
-        </tr>
+  <div class="block vehicle-detail-page" v-cloak>
+    <div class="vehicle-image">
+        <img v-if="vehicle" :src="vehicle.field_image[0].url" v-bind:alt="vehicle.field_image[0].alt">
+    </div>
+    <div v-if='vehicle' class="vehicle-details">
+      <h3>Boekingen {{ vehicle.name[0].value }}</h3>
+      <div class="vehicle-detail-body">
+        <table v-if="bookings.length > 0" >
+          <div class="booking-info" v-for="booking in bookings">
+            <tr>
+              <td>Huurder:</td>  <td>{{ booking.field_booker.field_first_name[0].value }} {{ booking.field_booker.field_last_name[0].value }}</td>
+            </tr>
+            <tr>
+              <td>Startdatum:</td><td>{{ moment(booking.field_start_date[0].value) }}</td>
+            </tr>
+            <tr>
+              <td>Einddatum:</td><td>{{ moment(booking.field_end_date[0].value) }}</td>
+            </tr>
+          </div>
+        </table>
+        <div v-else>
+          <p>Er zijn geen boekingen voor dit voertuig!</p>
+        </div>
       </div>
-    </table>
+    </div>
   </div>
 </template>
 
@@ -50,6 +55,7 @@ export default {
             self.getVehicleBookings(vehicleBookings[i].target_id);
           }
           self.checkUser(self.$parent.user.current_user.uid);
+          console.log(self.bookings);
         })
         .catch(e => {
           //this.errors.push(e)
@@ -100,3 +106,20 @@ export default {
   }
 }
 </script>
+
+<style>
+
+table {
+  width: 100%;
+}
+
+.booking-info {
+  margin: 1rem 0;
+  border-left: 2px solid black;
+  padding: 0 1rem;
+}
+
+td {
+  padding: 0.5rem 0.5rem 0.5rem 0;
+}
+</style>

@@ -12,13 +12,20 @@
                 </router-link>
             </li>
         
-            <li><i class="fa fa-shopping-cart" aria-hidden="true"></i>Aanbiedingen</li>
-        
-            <li><i class="fa fa-arrow-up" aria-hidden="true"></i>Top Aanbieders</li>
+            <li><router-link :to="{ name: 'BestSellers'}">
+                    <i class="fa fa-arrow-up" aria-hidden="true"></i>Top aanbieders
+                </router-link>
+            </li>
         
             <li>
                 <router-link :to="{ name: 'Profile'}">
                     <i class="fa fa-user" aria-hidden="true"></i>Mijn profiel
+                </router-link>
+            </li>
+
+            <li>
+                <router-link :to="{ name: 'Mijn boekingen'}">
+                   <i class="fa fa-book" aria-hidden="true"></i>Mijn boekingen
                 </router-link>
             </li>
         
@@ -38,7 +45,7 @@ export default {
           this.$parent.user = null;
           localStorage.removeItem('Track-User');
           this.$router.push('/');
-          document.getElementById('main-nav').classList.remove("nav-open");
+          
       },
       closeNav() {
         const nav = document.getElementById('main-nav')

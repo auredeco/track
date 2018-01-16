@@ -1,11 +1,26 @@
 <template>
-  <div class="bookingpage" v-cloak>
-    <h1>Booking</h1>
-    <datepicker v-model="startdate" calendar-button=True :highlighted="state.highlighted" :disabled="state.disabled" placeholder="start date" calendar-button-icon="fa fa-calendar" format="dd MMM yyyy"></datepicker>
-    <datepicker v-model="enddate" calendar-button=True :highlighted="state.highlighted" :disabled="state.disabled" placeholder="end date" calendar-button-icon="fa fa-calendar" format="dd MMM yyyy"></datepicker>
-    <form action="POST">
-      <input type="submit" class="btn btn-orange" value="Boeken" @click.prevent="MakeBooking">
-    </form>
+  <div class="block vehicle-detail-page" v-cloak>
+    <div class="vehicle-image">
+        <img v-if="vehicle" :src="vehicle.field_image[0].url" v-bind:alt="vehicle.field_image[0].alt">
+    </div>
+    <div v-if='vehicle' class="vehicle-details">
+      <div class="vehicle-detail-header">
+        <div class="owner">
+          <i class="fa fa-user" aria-hidden="true"></i>
+          <h1 v-if="owner" class="owner-name"> {{ owner.field_first_name[0].value }} {{ owner.field_last_name[0].value }}</h1>
+        </div>
+        <div class="price">
+          <p>€{{ vehicle.field_price[0].value }}/dag</p>
+        </div>
+      </div>
+      <div class="datepickers">
+        <datepicker v-model="startdate" calendar-button=True :highlighted="state.highlighted" :disabled="state.disabled" placeholder="start date" calendar-button-icon="fa fa-calendar" format="dd MMM yyyy"></datepicker>
+        <datepicker v-model="enddate" calendar-button=True :highlighted="state.highlighted" :disabled="state.disabled" placeholder="end date" calendar-button-icon="fa fa-calendar" format="dd MMM yyyy"></datepicker>
+      </div>
+      <form action="POST">
+        <input type="submit" class="btn btn-orange" value="Boeken" @click.prevent="MakeBooking">
+      </form>
+    </div>
   </div>
 </template>
 
@@ -24,6 +39,7 @@ export default {
       startdate: "",
       enddate: "",
       bookings: [],
+      owner: null,
       state: {
         disabled: {
             to: new Date(),
@@ -51,12 +67,23 @@ export default {
           for(let i = 0; i < vehicleBookings.length; i++) {
             self.getVehicleBookings(vehicleBookings[i].target_id);
           }
+          self.getVehicleOwner(response.data.user_id[0].target_id);
           self.SetArrayOfHighlightedDates();
         })
         .catch(e => {
           //this.errors.push(e)
         });
         
+    },
+    getVehicleOwner(ownerId) {
+      let self = this;
+      axios({
+        method: 'get',
+        baseURL: 'http://cmsdev.localhost/',
+        url: 'user/' + ownerId + '?_format=json',
+      }).then(response => {
+        self.owner = response.data;
+      })
     },
     getVehicleBookings(vehicleId) {
       let self = this;
@@ -105,7 +132,7 @@ export default {
         }
       }).then(response => {
         self.UpdateVehicleBookings(response.data);
-        //self.$router.push('booking/succes');
+        self.getBooker(response.data);
       })
       .catch( error =>{
         console.log(error.response);
@@ -126,7 +153,6 @@ export default {
         delete this.vehicle.created;
         delete this.vehicle.field_comments;
       }
-      console.log(JSON.stringify(this.vehicle));
       let car = this.vehicle;
 
       axios({
@@ -135,7 +161,43 @@ export default {
         url: 'track/vehicle/' + vehicleId + '?_format=json',
         data: car
       }).then(response => {
-        console.log(response.data);
+      }).catch( error => {
+        console.log(error);
+      })
+    },
+    getBooker(booking) {
+      let self = this;
+      let id = booking.field_booker[0].target_id;
+      axios({
+        method: 'GET',
+        baseURL: 'http://cmsdev.localhost/',
+        url: 'user/' + id + '?_format=json',
+      }).then(response => {
+        let user = response.data;
+        self.UpdateUserBookings(user, booking);
+      }).catch( error => {
+        console.log(error);
+      })
+    },
+    UpdateUserBookings(user, booking) {
+      let userId = user.uid[0].value
+      let newBooking = {
+        "target_id": booking.id[0].value,
+        "target_type": "booking",
+        "target_uuid": booking.uuid[0].value,
+        "url": "/track/booking/" + booking.id[0].value
+      }
+      user.field_user_bookings.push(newBooking);
+      delete user.changed;
+      delete user.created;
+
+      axios({
+        method: 'PATCH',
+        baseURL: 'http://cmsdev.localhost/',
+        url: 'user/' + userId + '?_format=json',
+        data: user
+      }).then(response => {
+        self.$router.push('/home');
       }).catch( error => {
         console.log(error);
       })
@@ -149,3 +211,24 @@ export default {
   }
 }
 </script>
+
+<style>
+.btn-orange {
+    background: #fac556;
+    border: none;
+    padding: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.datepickers {
+  margin-top: 1rem;
+}
+
+.vdp-datepicker {
+    border: 1px solid lightgray;
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+}
+</style>
